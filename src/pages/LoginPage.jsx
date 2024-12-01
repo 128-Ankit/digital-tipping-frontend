@@ -1,18 +1,19 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for redirection
-import { loginHotel } from "../utils/api"; // Your API function for login
+import { useNavigate } from "react-router-dom";
+import { loginHotel } from "../utils/api";
+import { toast } from 'react-hot-toast';
 
 const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
-    const navigate = useNavigate(); // Initialize the useNavigate hook
+    const navigate = useNavigate();
 
     // Handle login form submission
     const handleLogin = async (e) => {
         e.preventDefault();
-        setError(""); // Reset error state
+        setError("");
 
         // Validate inputs
         if (!email || !password) {
@@ -30,8 +31,13 @@ const LoginPage = () => {
             localStorage.setItem("jwtToken", response.data.token);
             localStorage.setItem("hotelId", response.data.hotelId);
 
-            // Redirect to the hotel-specific page
-            navigate(`/hotels/${response.data.hotelId}`);  // Redirect to hotel page
+            toast.success('Login Successfully!');
+
+            // Refresh and redirect
+            setTimeout(() => {
+                navigate(`/hotels/${response.data.hotelId}`); // Redirect to hotel page
+                window.location.reload(); // Refresh the page
+            }, 500);
 
         } catch (error) {
             setLoading(false);

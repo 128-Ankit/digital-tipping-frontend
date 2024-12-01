@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerHotel } from "../utils/api";
+import { toast } from 'react-hot-toast';
 
 const HotelRegistration = () => {
     const [formData, setFormData] = useState({
@@ -24,6 +25,7 @@ const HotelRegistration = () => {
         try {
             const response = await registerHotel(formData);
             const hotelId = response.data._id;
+            toast.success('Hotel registration Successfully!');
             navigate(`/qr/${hotelId}`);
         } catch (error) {
             setError("Error registering hotel.");

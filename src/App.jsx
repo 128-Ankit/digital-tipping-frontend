@@ -2,6 +2,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import AppRoutes from "./routes/AppRoutes";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { Toaster } from 'react-hot-toast';
 
 const App = () => {
   return (
@@ -9,6 +10,10 @@ const App = () => {
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow">
+          <Toaster
+            position="top-center"
+            reverseOrder={false}
+          />
           <AppRoutes />
         </main>
         <Footer />

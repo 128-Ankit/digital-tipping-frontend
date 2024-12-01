@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { addEmployee } from "../utils/api";
+import { toast } from 'react-hot-toast';
 
 // eslint-disable-next-line react/prop-types
 const AddEmployeeModal = ({ hotelId, setShowModal, updateEmployeeList }) => {
     const [formData, setFormData] = useState({ name: "", bankDetails: "" });
-    const [error, setError] = useState("");
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -19,9 +19,9 @@ const AddEmployeeModal = ({ hotelId, setShowModal, updateEmployeeList }) => {
 
             setShowModal(false); // Close the modal
             updateEmployeeList(response.data.employee); // Update employee list with the new employee
-            alert("Employee added successfully!");
+            toast.success("Employee added successfully!");
         } catch (error) {
-            setError("Error adding employee.");
+            toast.error("Login First")
             console.error(error);
         }
     };
@@ -30,7 +30,6 @@ const AddEmployeeModal = ({ hotelId, setShowModal, updateEmployeeList }) => {
         <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white p-6 rounded shadow-md w-96">
                 <h2 className="text-2xl font-bold mb-4">Add Employee</h2>
-                {error && <p className="text-red-500 mb-2">{error}</p>}
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
                         <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
