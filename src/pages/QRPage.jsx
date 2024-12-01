@@ -40,7 +40,7 @@ const QRPage = () => {
         {/* Button */}
         <div className="mt-6 text-center">
           <a
-            href={`https://tip.thegigbee.com/hotels/${hotel._id}`}
+            href={`https://digital-tipping-ojb73jpnu-ankit-kumars-projects-d358ccdd.vercel.app/hotels/${hotel._id}`}
             className="inline-block bg-indigo-600 text-white py-2 px-6 rounded-md hover:bg-indigo-700 transition duration-300"
           >
             Tip Now
