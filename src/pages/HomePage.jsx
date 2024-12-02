@@ -14,6 +14,7 @@ const HomePage = () => {
         setIsLoading(true); // Start loading
         const response = await getHotels();
         setHotels(response.data);
+        console.log("Hotels fetched:", response.data);
       } catch (error) {
         console.error("Error fetching hotels:", error);
       } finally {
@@ -37,7 +38,7 @@ const HomePage = () => {
   // Calculate total number of pages
   const totalPages = Math.ceil(hotels.length / hotelsPerPage);
 
-  const dummyImage = "https://cf.bstatic.com/xdata/images/hotel/max1024x768/343327621.jpg?k=86f1c4b18df343949c0e40c25e13fc4aeb4e4fa5dd2b810512dff62b00f00f69&o=&hp=1";
+  const dummyImage = "https://via.placeholder.com/600x400?text=Hotel+Image";
 
   return (
     <div className="container mx-auto p-4">
@@ -45,8 +46,7 @@ const HomePage = () => {
 
       {isLoading ? (
         <div className="flex flex-col justify-center items-center mt-36">
-          <div className="loader">
-          </div>
+          <div className="loader"></div>
           <p className="text-xl pt-3">Loading...</p>
         </div>
       ) : hotels.length > 0 ? (
@@ -57,10 +57,10 @@ const HomePage = () => {
                 key={hotel._id}
                 className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-4"
               >
-                <div className="relative pb-2/3 w-full h-[150px] rounded overflow-hidden">
+                <div className="relative w-full h-48 rounded overflow-hidden">
                   <img
                     src={hotel.image || dummyImage}
-                    alt={hotel.name || "Hotel"}
+                    alt={hotel.image || "Hotel"}
                     className="absolute h-full w-full object-cover"
                     loading="lazy"
                   />
@@ -73,7 +73,10 @@ const HomePage = () => {
                     {hotel.name}
                   </Link>
                 </h2>
-                <p className="text-gray-600">{hotel.email || "No contact info available."}</p>
+                <div className="overflow-hidden max-h-[38px]">
+                  <p className="text-gray-600 h-6 overflow-hidden">{hotel.description || "No description available."}..</p>
+                  <p className="text-sm text-gray-500">{hotel.address}</p>
+                </div>
                 <Link
                   to={`/hotels/${hotel._id}`}
                   className="mt-4 inline-block text-sm text-white bg-blue-600 hover:bg-blue-700 rounded px-4 py-2"
