@@ -60,6 +60,7 @@ const HomePage = () => {
                     src={hotel.image || dummyImage}
                     alt={hotel.name || "Hotel"}
                     className="absolute h-full w-full object-cover"
+                    loading="lazy"
                   />
                 </div>
                 <h2 className="text-xl font-semibold text-gray-800 mt-4">
