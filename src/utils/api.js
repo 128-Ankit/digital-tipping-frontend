@@ -1,8 +1,8 @@
 import axios from "axios";
 
 // Define the base URL for the backend
-// const API_BASE_URL = "https://digital-tipping.onrender.com/api";
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = "https://digital-tipping.onrender.com/api";
+// const API_BASE_URL = "http://localhost:5000/api";
 
 // Hotel APIs
 export const registerHotel = async (hotelData) => {
