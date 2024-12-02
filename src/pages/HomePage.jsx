@@ -44,8 +44,10 @@ const HomePage = () => {
       <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Discover Our Hotels</h1>
 
       {isLoading ? (
-        <div className="flex justify-center items-center h-40">
-          <div className="loader"></div>
+        <div className="flex flex-col justify-center items-center mt-36">
+          <div className="loader">
+          </div>
+          <p className="text-xl pt-3">Loading...</p>
         </div>
       ) : hotels.length > 0 ? (
         <>
@@ -83,11 +85,11 @@ const HomePage = () => {
           </div>
 
           {/* Pagination Controls */}
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center mt-10">
             <button
               onClick={() => paginate(currentPage - 1)}
               disabled={currentPage === 1}
-              className="px-4 py-2 bg-blue-400 text-white rounded disabled:bg-gray-300"
+              className="px-4 py-2 bg-blue-600 text-white rounded disabled:bg-gray-300"
             >
               Previous
             </button>
@@ -97,7 +99,7 @@ const HomePage = () => {
             <button
               onClick={() => paginate(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className="px-4 py-2 bg-blue-400 text-white rounded disabled:bg-gray-300"
+              className="px-4 py-2 bg-blue-600 text-white rounded disabled:bg-gray-300"
             >
               Next
             </button>

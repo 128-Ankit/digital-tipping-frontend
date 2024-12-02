@@ -46,7 +46,15 @@ const EmployeeTips = () => {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) {
+    return (
+      <div className="flex flex-col justify-center items-center mt-56">
+        <div className="loader">
+        </div>
+        <p className="text-xl pt-3">Loading...</p>
+      </div>
+    )
+  }
 
   return (
     <div className="container mx-auto p-6">
