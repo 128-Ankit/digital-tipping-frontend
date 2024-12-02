@@ -18,7 +18,10 @@ const QRPage = () => {
     fetchHotel();
   }, [hotelId]);
 
-  if (!hotel) return <p className="text-center text-lg font-semibold mt-10">Loading...</p>;
+  if (!hotel) return
+  <div className="flex justify-center items-center h-40">
+    <div className="loader"></div>
+  </div>
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-6">

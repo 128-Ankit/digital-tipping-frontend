@@ -77,7 +77,10 @@ const HotelDetails = () => {
     setEmployees((prevEmployees) => [...prevEmployees, newEmployee]);
   };
 
-  if (!hotel) return <p>Loading...</p>;
+  if (!hotel) return
+  <div className="flex justify-center items-center h-40">
+    <div className="loader"></div>
+  </div>
 
   const hotelBannerImage =
     hotel.bannerImage ||

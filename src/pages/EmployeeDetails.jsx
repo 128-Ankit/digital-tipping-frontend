@@ -31,7 +31,10 @@ const EmployeeDetails = () => {
     }, [employeeId]);
 
     // Handle loading state
-    if (loading) return <p className="text-center text-xl">Loading...</p>;
+    if (loading) return
+    <div className="flex justify-center items-center h-40">
+        <div className="loader"></div>
+    </div>;
 
     // Handle case if employee or hotel is not found
     if (!employee || !hotel) {

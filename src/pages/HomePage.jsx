@@ -44,8 +44,8 @@ const HomePage = () => {
       <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Discover Our Hotels</h1>
 
       {isLoading ? (
-        <div className="text-center">
-          <p className="text-gray-600">Loading hotels...</p>
+        <div className="flex justify-center items-center h-40">
+          <div className="loader"></div>
         </div>
       ) : hotels.length > 0 ? (
         <>
