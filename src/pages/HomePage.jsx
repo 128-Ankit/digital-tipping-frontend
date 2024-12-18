@@ -4,21 +4,21 @@ import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const [hotels, setHotels] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // Loading state
+  const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [hotelsPerPage] = useState(8);
 
   useEffect(() => {
     const fetchHotels = async () => {
       try {
-        setIsLoading(true); // Start loading
+        setIsLoading(true);
         const response = await getHotels();
         setHotels(response.data);
         console.log("Hotels fetched:", response.data);
       } catch (error) {
         console.error("Error fetching hotels:", error);
       } finally {
-        setIsLoading(false); // End loading
+        setIsLoading(false);
       }
     };
 
@@ -45,9 +45,14 @@ const HomePage = () => {
       <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Discover Our Hotels</h1>
 
       {isLoading ? (
-        <div className="flex flex-col justify-center items-center mt-36">
-          <div className="loader"></div>
-          <p className="text-xl pt-3">Loading...</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {Array.from({ length: hotelsPerPage }).map((_, index) => (
+            <div key={index} className="bg-white rounded-lg shadow-md p-4">
+              <div className="w-full h-48 skeleton"></div>
+              <div className="mt-4 h-6 skeleton"></div>
+              <div className="mt-2 h-4 skeleton"></div>
+            </div>
+          ))}
         </div>
       ) : hotels.length > 0 ? (
         <>

@@ -28,7 +28,6 @@
 }
 
 @keyframes outerPulse {
-
   0%,
   100% {
     transform: scale(1);
@@ -42,7 +41,6 @@
 }
 
 @keyframes innerPulse {
-
   0%,
   100% {
     transform: translate(-50%, -50%) scale(0.9);
@@ -52,5 +50,21 @@
   50% {
     transform: translate(-50%, -50%) scale(1.1);
     opacity: 0.9;
+  }
+}
+
+.skeleton {
+  background: #e0e0e0;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% {
+    background-color: #e0e0e0;
+  }
+  50% {
+    background-color: #f0f0f0;
+  }
+  100% {
+    background-color: #e0e0e0;
   }
 }

@@ -2,7 +2,6 @@ import axios from "axios";
 
 // Define the base URL for the backend
 const API_BASE_URL = "https://digital-tipping.onrender.com/api";
-// const API_BASE_URL = "http://localhost:5000/api";
 
 // Hotel APIs
 export const registerHotel = async (hotelData) => {
@@ -29,11 +28,11 @@ export const loginHotel = async (loginData) => {
 
 // Employee APIs
 export const addEmployee = async (employeeData) => {
-    const token = localStorage.getItem("jwtToken"); // Get JWT token for authorization
+    const token = localStorage.getItem("jwtToken");
 
     return await axios.post(`${API_BASE_URL}/employees`, employeeData, {
         headers: {
-            "Authorization": `Bearer ${token}`,  // Include token in the Authorization header
+            "Authorization": `Bearer ${token}`,
         }
     });
 };
@@ -48,7 +47,7 @@ export const getEmployeeById = async (employeeId) => {
         return response;
     } catch (error) {
         console.error("Error fetching employee by ID:", error);
-        throw error;  // Propagate error to frontend for handling
+        throw error;
     }
 };
 
